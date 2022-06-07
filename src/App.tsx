@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import {listOutline, notificationsOutline, checkmarkDoneOutline} from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -33,9 +33,15 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React  from "react";
+import ViewTask from "./pages/ViewTask";
 
 setupIonicReact();
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
@@ -53,19 +59,22 @@ const App: React.FC = () => (
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
+          <Route path='/view-task'>
+            <ViewTask />
+          </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+            <IonIcon icon={listOutline} />
+            <IonLabel>all tasks</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonIcon icon={checkmarkDoneOutline} />
+            <IonLabel>completed</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon icon={notificationsOutline} />
+            <IonLabel>notifications</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
